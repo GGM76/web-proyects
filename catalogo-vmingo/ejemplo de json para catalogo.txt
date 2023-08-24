@@ -1,0 +1,21 @@
+{
+	"titulo": "Lip Samurai Universal Facia Faldon Flexible Estribo Spoiler",
+	"SKU": "SKU",
+	"portada": "https://smashbros.com/images/og/sonic.jpg",
+	"descripcion": "Aqui va la descripcion",
+	"contenido": "aqui puede ir una imagen o descripcion de las cosas que lleva extra",
+	"final": "https://smashbros.com/images/og/sonic.jpg",
+	"variantes": [{
+			"Color": "rojo",
+			"Hex": "#f00",
+			"ML": "Codigo de ML",
+			"AZ": "Codigo AMAZON"
+		},
+		{
+			"Color": "rojo",
+			"Hex": "#f00",
+			"ML": "Codigo de ML",
+			"AZ": "Codigo AMAZON"
+		}
+	]
+}

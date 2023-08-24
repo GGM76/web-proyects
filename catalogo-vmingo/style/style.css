@@ -1,0 +1,116 @@
+
+h1{
+    width: 100%;
+}
+
+h2{
+    text-align: center;
+}
+
+h4{
+    padding: 1%;
+    margin: 2%;
+}
+
+body {
+    font-family: "Sofia", sans-serif;
+}
+
+button{
+    background-color: DodgerBlue;
+    color: azure;
+    border-radius: 50px;
+    height: 30px;
+    width: 100%;
+
+}
+
+footer{
+    background-color: brown;
+}
+button:hover{
+    background-color: blue;
+}
+
+.body1{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.header1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: aqua;
+}
+
+.container {
+    display: flex;
+    background-color: violet;
+}
+
+.end1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-redonda{
+    width: 60px;
+    height: 60px;
+    border-radius: 300px;
+    padding: 1%;
+    margin: 1%;
+    padding: 10px;
+}
+
+.logo{
+    border-radius: 150px;
+}
+
+#imgsocial{
+    display: flex;
+    align-items: baseline;
+}
+
+#head1{
+    display: grid;
+    align-content: stretch;
+    justify-items: center;
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+}
+
+@media (max-width: 600px) {
+    body{
+        font-size: 2vw;        
+    }
+    img{
+        width: 50%;
+        height: auto;
+    }
+    h2{
+        padding: 2%;
+    }
+    .img-redonda{
+        width: 50%;
+        height: auto;
+    }
+    .body1{
+      flex-direction: column;
+      font-size: 2vw;
+    }
+    @media (max-width: 800px) {
+       .header1 {
+          flex-direction: column;
+          font-size: 2vw;
+        }
+      }
+      footer{
+        font-size: 2vw;
+      }
+  }
