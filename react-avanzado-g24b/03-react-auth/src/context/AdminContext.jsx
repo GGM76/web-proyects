@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import jwtDecode from "jwt-decode";
+import { createContext, useState } from 'react'
+import jwtDecode from 'jwt-decode'
 
 // #1 Crear el contexto
 
@@ -12,13 +12,13 @@ const AdminProvider = ({ children }) => {
 
   const login = (token) => {
     const decoded = jwtDecode(token)
-    const admin = decoded.role === "ADMIN"
+    const admin = decoded.role === 'ADMIN'
     setIsAdmin(admin)
     return admin
   }
 
   const logout = () => {
-    localStorage.removeItem("jwt_token")
+    localStorage.removeItem('jwt_token')
     setIsAdmin(false)
   }
 
