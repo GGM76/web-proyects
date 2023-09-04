@@ -22,9 +22,9 @@ const Header = () => {
         </li>
         {
           isAdmin &&
-            <li className='header__list-item'>
-              <NavLink to='/secret' className={({ isActive }) => linkIsActive(isActive)}>Secret</NavLink>
-            </li>
+          <li className='header__list-item'>
+            <NavLink to='/secret' className={({ isActive }) => linkIsActive(isActive)}>Secret</NavLink>
+          </li>
         }
         <li className='header__list-item'>
           <NavLink to='/login' className={({ isActive }) => linkIsActive(isActive)}>Login</NavLink>

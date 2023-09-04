@@ -6,8 +6,8 @@ import { useAdminContext } from '@/hooks/useAdmin'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
   const { login } = useAdminContext()
   const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ const Login = () => {
     try {
       const response = await loginUserService(data)
       const token = response.data.token
-      localStorage.setItem('jwt_token', token)
+      localStorage.setItem("jwt_token", token)
       console.log(token)
       const admin = login(token)
       navigate(admin ? '/secret' : '/')
