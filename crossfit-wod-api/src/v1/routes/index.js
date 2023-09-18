@@ -4,7 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const apicache = require("apicache");
 const v1WorkoutRouter = require("./v1/routes/workoutRoutes");
-const v1Router = require("./v1/routes");
 const { swaggerDocs: V1SwaggerDocs } = require("./v1/swagger");
 const router = require("../../rest-api-express-mongo");
 
