@@ -1,10 +1,11 @@
-const routes = require('./routes/routes');
+
+//const routes = require('./routes/routes');
 const express = require('express');
-const Model = require('../models/model');
+const Model = require('../model/model');
 const router = express.Router()
 
 //Post Method
-router.post('/post', (req, res) => {
+router.post('/post', async (req, res) => {
     const data = new Model({
         name: req.body.name,
         age: req.body.age
@@ -71,7 +72,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 })
 
-app.use('/api', routes)
+//app.use('/api', routes)
 
 module.exports = router;
 
