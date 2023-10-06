@@ -35,5 +35,11 @@ const router = express.Router();
     response.send(petList)
  })
 
+ router.get('/api/v1/pets/:id', (request, response) => {
+    //console.log("Novia escogida", request.params)
+    const onePet = petList.pets.find(pet => pet.id == request.params.id)// consigue una cosa en especifico 
+    response.send(onePet)
+ })
+
 
  module.exports = router
