@@ -1,6 +1,8 @@
 const express = require ('express');
 const petsRouter = require('./api/v1/pets')
+//sconst cakeRouter = require('./api/v1/cakes') 
 const app = express()
+
 app.use(express.urlencoded({extend: true}))
 app.use(express.json())
 app.get ('/', (resquest, response) => {
@@ -8,6 +10,8 @@ app.get ('/', (resquest, response) => {
 })
 
 app.use(petsRouter)
+//app.use(cakeRouter)
+
 app.listen (3000, () => {
     console.log('Servidor escuchando en el puerto 3000')
 })
