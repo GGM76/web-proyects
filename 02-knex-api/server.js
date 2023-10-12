@@ -4,10 +4,12 @@ const homeRoutes = require('./routes/homeRoutes')
 
 const app = express()
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+/* Middleware */
+app.use(express.urlencoded({ extended: true })) // permite recibir datos especiales (como arrays) en el body
+app.use(express.json()) // middleware para trabajar con JSON
 
+/* Routes */
 app.use('/api/v1', homeRoutes)
-// routes
 
-app.listen(3000, () => console.log('Server on : 3000'))
+/* Levantar el servidor */
+app.listen(3000, () => console.log('Server ON: 3000'))

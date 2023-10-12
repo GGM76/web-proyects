@@ -7,244 +7,244 @@ exports.seed = async function (knex) {
   await knex('homes').truncate()
   await knex('homes').insert([
     {
-      house_id: '1',
-      title: 'Cozy Apartment in the City Center',
-      description: 'A charming apartment in the heart of the city.',
-      guests: '2',
+      house_id: 1,
+      title: 'Cozy Cottage',
+      description: 'A charming cottage nestled in the countryside',
+      guests: 4,
       address: '123 Main Street',
-      rental_price: '100'
+      rental_price: 1500
     },
     {
-      house_id: '2',
-      title: 'Beachfront Villa with Stunning Views',
-      description: 'A luxurious villa with direct access to the beach.',
-      guests: '8',
-      address: '456 Ocean Avenue',
-      rental_price: '500'
+      house_id: 2,
+      title: 'Luxury Villa',
+      description: 'Experience pure luxury in this stunning villa',
+      guests: 8,
+      address: '456 Elm Avenue',
+      rental_price: 3000
     },
     {
-      house_id: '3',
-      title: 'Spacious Loft in Historic District',
-      description: 'A stylish loft in a vibrant and historic neighborhood.',
-      guests: '4',
-      address: '789 Elm Street',
-      rental_price: '200'
+      house_id: 3,
+      title: 'Beachfront Bungalow',
+      description: 'Relax and unwind in this beachfront bungalow',
+      guests: 2,
+      address: '789 Ocean Drive',
+      rental_price: 2000
     },
     {
-      house_id: '4',
-      title: 'Mountain Cabin Retreat',
-      description: 'A cozy cabin nestled in the mountains.',
-      guests: '6',
-      address: '321 Pine Road',
-      rental_price: '300'
+      house_id: 4,
+      title: 'Mountain Retreat',
+      description: 'Escape to the mountains in this peaceful retreat',
+      guests: 6,
+      address: '321 Pine Street',
+      rental_price: 1800
     },
     {
-      house_id: '5',
-      title: 'Modern Condo with Panoramic City Views',
-      description: 'A sleek and modern condo with breathtaking views.',
-      guests: '3',
-      address: '987 Walnut Avenue',
-      rental_price: '150'
+      house_id: 5,
+      title: 'City Loft',
+      description: 'Stay in the heart of the city in this modern loft',
+      guests: 2,
+      address: '555 Main Boulevard',
+      rental_price: 2500
     },
     {
-      house_id: '6',
-      title: 'Rustic Farmhouse in the Countryside',
-      description: 'A charming farmhouse surrounded by nature.',
-      guests: '10',
-      address: '654 Farm Lane',
-      rental_price: '400'
+      house_id: 6,
+      title: 'Countryside Farmhouse',
+      description: 'Experience country living in this rustic farmhouse',
+      guests: 10,
+      address: '777 Meadow Lane',
+      rental_price: 3500
     },
     {
-      house_id: '7',
-      title: 'Luxury Penthouse in the Heart of Downtown',
-      description: 'An upscale penthouse with all the amenities.',
-      guests: '4',
-      address: '321 Main Street',
-      rental_price: '600'
+      house_id: 7,
+      title: 'Lakefront Cabin',
+      description: 'Enjoy lake views in this cozy cabin',
+      guests: 4,
+      address: '999 Lakeview Drive',
+      rental_price: 1700
     },
     {
-      house_id: '8',
-      title: 'Secluded Cottage by the Lake',
-      description: 'A peaceful cottage with stunning lake views.',
-      guests: '2',
-      address: '654 Lake Road',
-      rental_price: '250'
+      house_id: 8,
+      title: 'Historic Townhouse',
+      description: 'Step back in time in this historic townhouse',
+      guests: 6,
+      address: '222 Heritage Street',
+      rental_price: 2000
     },
     {
-      house_id: '9',
-      title: 'Historic Brownstone in the City',
-      description: 'A beautifully restored brownstone in a prime location.',
-      guests: '6',
-      address: '987 Elm Street',
-      rental_price: '350'
+      house_id: 9,
+      title: 'Secluded Cottage',
+      description: 'Get away from it all in this secluded cottage',
+      guests: 2,
+      address: '444 Quiet Road',
+      rental_price: 1600
     },
     {
-      house_id: '10',
-      title: 'Beach Bungalow Steps from the Sand',
-      description: 'A cozy bungalow just a short walk from the beach.',
-      guests: '4',
-      address: '123 Ocean Avenue',
-      rental_price: '200'
+      house_id: 10,
+      title: 'Modern Apartment',
+      description: 'Experience urban living in this sleek apartment',
+      guests: 4,
+      address: '888 Downtown Avenue',
+      rental_price: 2200
     },
     {
-      house_id: '11',
-      title: 'Ski Chalet with Mountain Views',
-      description: 'A charming chalet with easy access to the slopes.',
-      guests: '8',
-      address: '456 Mountain Road',
-      rental_price: '400'
+      house_id: 11,
+      title: 'Beach House',
+      description: 'Enjoy sun, sand, and surf in this beach house',
+      guests: 8,
+      address: '111 Shoreline Drive',
+      rental_price: 2800
     },
     {
-      house_id: '12',
-      title: 'Modern Loft in the City Center',
-      description: 'A stylish loft in a trendy urban neighborhood.',
-      guests: '2',
-      address: '789 Main Street',
-      rental_price: '150'
+      house_id: 12,
+      title: 'Mountain Chalet',
+      description: 'Stay in a cozy chalet surrounded by nature',
+      guests: 6,
+      address: '555 Pine Avenue',
+      rental_price: 1900
     },
     {
-      house_id: '13',
-      title: 'Private Villa with Infinity Pool',
-      description: 'A luxurious villa with a private pool and stunning views.',
-      guests: '10',
-      address: '321 Ocean Avenue',
-      rental_price: '800'
+      house_id: 13,
+      title: 'City Penthouse',
+      description: 'Live the high life in this luxurious penthouse',
+      guests: 2,
+      address: '777 Skyscraper Road',
+      rental_price: 3000
     },
     {
-      house_id: '14',
-      title: 'Cozy Cabin in the Woods',
-      description: 'A secluded cabin surrounded by nature.',
-      guests: '4',
-      address: '654 Pine Road',
-      rental_price: '200'
+      house_id: 14,
+      title: 'Rustic Log Cabin',
+      description: 'Experience rustic charm in this log cabin',
+      guests: 4,
+      address: '999 Forest Lane',
+      rental_price: 1500
     },
     {
-      house_id: '15',
-      title: 'Chic Apartment with City Skyline Views',
-      description: 'A modern apartment with a balcony overlooking the city.',
-      guests: '3',
-      address: '987 Elm Street',
-      rental_price: '175'
+      house_id: 15,
+      title: 'Elegant Mansion',
+      description: 'Indulge in luxury in this grand mansion',
+      guests: 12,
+      address: '222 Grand Boulevard',
+      rental_price: 5000
     },
     {
-      house_id: '16',
-      title: 'Quaint Cottage in a Quaint Town',
-      description: 'A charming cottage in a picturesque village.',
-      guests: '2',
-      address: '123 Maple Avenue',
-      rental_price: '150'
+      house_id: 16,
+      title: 'Lakeside Retreat',
+      description: 'Escape to the lake in this tranquil retreat',
+      guests: 6,
+      address: '444 Lakeview Drive',
+      rental_price: 2200
     },
     {
-      house_id: '17',
-      title: 'Historic Mansion with Old-World Charm',
-      description: 'A grand mansion with period details and elegant decor.',
-      guests: '12',
-      address: '456 Main Street',
-      rental_price: '1000'
+      house_id: 17,
+      title: 'Historic Cottage',
+      description: 'Stay in a piece of history in this charming cottage',
+      guests: 4,
+      address: '888 Heritage Street',
+      rental_price: 1800
     },
     {
-      house_id: '18',
-      title: 'Lakefront Retreat with Private Dock',
-      description: 'A serene retreat with direct access to the lake.',
-      guests: '6',
-      address: '789 Lake Road',
-      rental_price: '350'
+      house_id: 18,
+      title: 'Modern Townhouse',
+      description: 'Experience contemporary living in this stylish townhouse',
+      guests: 6,
+      address: '111 Urban Lane',
+      rental_price: 2500
     },
     {
-      house_id: '19',
-      title: 'Modern Townhouse in the City',
-      description: 'A sleek and contemporary townhouse in a prime location.',
-      guests: '4',
-      address: '321 Elm Street',
-      rental_price: '300'
+      house_id: 19,
+      title: 'Mountain View Cabin',
+      description: 'Enjoy breathtaking mountain views in this cozy cabin',
+      guests: 2,
+      address: '555 Vista Avenue',
+      rental_price: 1600
     },
     {
-      house_id: '20',
-      title: 'Beach House with Ocean Views',
-      description: 'A spacious beach house with panoramic views of the sea.',
-      guests: '8',
-      address: '654 Ocean Avenue',
-      rental_price: '500'
+      house_id: 20,
+      title: 'Beachfront Condo',
+      description: 'Wake up to stunning ocean views in this beachfront condo',
+      guests: 4,
+      address: '777 Beach Drive',
+      rental_price: 2000
     },
     {
-      house_id: '21',
-      title: 'Cozy Log Cabin in the Mountains',
-      description: 'A rustic cabin with a warm and inviting atmosphere.',
-      guests: '4',
-      address: '987 Pine Road',
-      rental_price: '250'
+      house_id: 21,
+      title: 'Charming Cottage',
+      description: 'Experience charm and comfort in this lovely cottage',
+      guests: 2,
+      address: '999 Cozy Road',
+      rental_price: 1400
     },
     {
-      house_id: '22',
-      title: 'Luxury Condo with Resort-Style Amenities',
-      description: 'An upscale condo with a pool, gym, and more.',
-      guests: '2',
-      address: '123 Walnut Avenue',
-      rental_price: '400'
+      house_id: 22,
+      title: 'Luxury Apartment',
+      description: 'Indulge in luxury in this high-end apartment',
+      guests: 4,
+      address: '222 Luxury Avenue',
+      rental_price: 2800
     },
     {
-      house_id: '23',
-      title: 'Tranquil Farmhouse with Scenic Views',
-      description: 'A peaceful farmhouse surrounded by fields and meadows.',
-      guests: '6',
-      address: '456 Farm Lane',
-      rental_price: '300'
+      house_id: 23,
+      title: 'Riverside Retreat',
+      description: 'Escape to the river in this peaceful retreat',
+      guests: 6,
+      address: '444 Riverfront Lane',
+      rental_price: 2100
     },
     {
-      house_id: '24',
-      title: 'Penthouse Suite with City Skyline Views',
-      description: 'A luxurious suite with floor-to-ceiling windows.',
-      guests: '2',
-      address: '789 Main Street',
-      rental_price: '600'
+      house_id: 24,
+      title: 'Historic Farmhouse',
+      description: 'Step back in time in this historic farmhouse',
+      guests: 8,
+      address: '888 Farm Road',
+      rental_price: 3200
     },
     {
-      house_id: '25',
-      title: 'Lake Cottage with Private Beach',
-      description: 'A charming cottage with a secluded beach on the lake.',
-      guests: '4',
-      address: '321 Lake Road',
-      rental_price: '300'
+      house_id: 25,
+      title: 'City View Loft',
+      description: 'Enjoy panoramic city views in this modern loft',
+      guests: 2,
+      address: '111 Skyline Boulevard',
+      rental_price: 2400
     },
     {
-      house_id: '26',
-      title: 'Historic Townhouse in the Heart of the City',
-      description: 'A beautifully preserved townhouse with period features.',
-      guests: '8',
-      address: '654 Elm Street',
-      rental_price: '500'
+      house_id: 26,
+      title: 'Secluded Cabin',
+      description: 'Get away from it all in this secluded cabin',
+      guests: 4,
+      address: '555 Wilderness Drive',
+      rental_price: 1700
     },
     {
-      house_id: '27',
-      title: 'Beachfront Condo with Stunning Ocean Views',
-      description: 'A modern condo with a balcony overlooking the beach.',
-      guests: '4',
-      address: '987 Ocean Avenue',
-      rental_price: '350'
+      house_id: 27,
+      title: 'Mountain Lodge',
+      description: 'Stay in a cozy lodge surrounded by nature',
+      guests: 10,
+      address: '777 Mountain Lane',
+      rental_price: 3800
     },
     {
-      house_id: '28',
-      title: 'Ski-In, Ski-Out Chalet on the Mountain',
-      description: 'A cozy chalet with direct access to the ski slopes.',
-      guests: '6',
-      address: '123 Mountain Road',
-      rental_price: '400'
+      house_id: 28,
+      title: 'Lake House',
+      description: 'Experience lakeside living in this charming house',
+      guests: 6,
+      address: '999 Lakeview Drive',
+      rental_price: 2000
     },
     {
-      house_id: '29',
-      title: 'Urban Oasis in the City Center',
-      description: 'A tranquil retreat in the midst of the urban jungle.',
-      guests: '2',
-      address: '456 Main Street',
-      rental_price: '200'
+      house_id: 29,
+      title: 'Historic Townhome',
+      description: 'Step back in time in this historic townhome',
+      guests: 6,
+      address: '222 Heritage Street',
+      rental_price: 2200
     },
     {
-      house_id: '30',
-      title: 'Private Island with Luxury Villa',
-      description: 'An exclusive island with a lavish villa and private beach.',
-      guests: '12',
-      address: '789 Island Road',
-      rental_price: '10000'
+      house_id: 30,
+      title: 'Seaside Cottage',
+      description: 'Enjoy the seaside in this cozy cottage',
+      guests: 2,
+      address: '444 Oceanfront Road',
+      rental_price: 1800
     }
   ])
 }

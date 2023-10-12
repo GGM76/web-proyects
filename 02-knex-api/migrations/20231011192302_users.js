@@ -9,21 +9,21 @@ exports.up = function (knex) {
         table.increments('user_id').primary()
         table.string('name').notNullable()
         table.string('last_name').notNullable()
-        table.string('email').notNullable().unique()
+        table.string('email').notNullable().unique() // unique es para que no se repita
         table.string('phone').notNullable().unique()
         table.string('description')
         table.string('password').notNullable()
-        table.boolean('active').notNullable().defaultTo(true)// especifico el valor por defecto
-        table.timestamp('created_at').defaultTo(knex.fn.now())// devuelve la fecha actual moemnto creado
+        table.boolean('active').notNullable().defaultTo(true)
+        table.timestamp('created_at').defaultTo(knex.fn.now())
       })
     }
   })
 }
 
 /**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
+   * @param { import("knex").Knex } knex
+   * @returns { Promise<void> }
+   */
 exports.down = function (knex) {
   return knex.schema.hasTable('users').then(function (exists) {
     if (exists) {
