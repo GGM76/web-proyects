@@ -6,9 +6,9 @@ const homeController = require('../controllers/homeController.js')
 
 router.post('/vmingo', homeController.createHome)
 router.get('/vmingo', homeController.findAllHomes)
-router.get('/vmingo/:houseId', homeController.findOneHome)
-router.patch('/vmingo/:houseId', homeController.updateOneHome)
-router.delete('/vmingo/:houseId', homeController.softDeleteOneHome)
-router.delete('/vmingo/destroy/:houseId', homeController.destroyOneHome)
+router.get('/vmingo/:ml', homeController.findOneHome)
+router.patch('/vmingo/:sku', homeController.updateOneHome)
+router.delete('/vmingo/:sku', homeController.softDeleteOneHome)
+router.delete('/vmingo/destroy/:sku', homeController.destroyOneHome)
 
 module.exports = router

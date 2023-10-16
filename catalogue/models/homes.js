@@ -11,7 +11,7 @@ const create = (body) => {
     .insert(body) // ¿Qué datos voy a insertar?
     .into('products') // ¿En qué tabla? - Homes
     .returning(
-      ['house_id', 'title', 'description', 'guests', 'address', 'rental_price', 'fk_user', 'active', 'created_at']) // ¿Qué quiero que me regrese?
+      ['sku', 'ml', 'aws', 'title', 'description ', 'variant', 'hex', 'active', 'created_at']) // ¿Qué quiero que me regrese?
 }
 
 const findAll = () => {
@@ -21,36 +21,36 @@ const findAll = () => {
     .where('active', true) // Traemos solo los campos a los que no hayamos hecho soft delete
 }
 
-const findOne = (houseId) => {
+const findOne = (ml) => {
   return knex
-    .select(['house_id', 'title', 'description', 'guests', 'address', 'rental_price', 'fk_user', 'active', 'created_at'])
+    .select(['*'])
     .from('homes')
-    .where({ house_id: houseId })
+    .where({ ml: ml })
     .where('active', true)
 }
 
-const update = (houseId, body) => {
+const update = (sku, body) => {
   return knex
     .update(body)
     .from('homes')
-    .where({ house_id: houseId })
-    .returning(['house_id', 'title', 'description', 'guests', 'address', 'rental_price', 'fk_user', 'active', 'created_at'])
+    .where({ sku: sku })
+    .returning(['sku', 'ml', 'aws', 'title', 'description ', 'variant', 'hex', 'active', 'created_at'])
 }
 
 // Voy a borrar un registro de manera REAL de la base de datos del
-const destroy = (houseId) => {
+const destroy = (sku) => {
   return knex
     .del() // delete
     .from('homes')
-    .where({ house_id: houseId })
+    .where({ sku: sku })
 }
 
 // Borrado lógico, solo cambio active de true a false
-const softDelete = (houseId) => {
+const softDelete = (sku) => {
   return knex
     .update({ active: false })
     .from('homes')
-    .where({ house_id: houseId })
+    .where({ sku: sku })
 }
 
 module.exports = {
