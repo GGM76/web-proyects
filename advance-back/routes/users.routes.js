@@ -1,14 +1,17 @@
-const { Router } = require('express')
-const { createUser, 
-        readUser,
-        updateUser,
-        deleteUser } = require('../controllers/usersController')
+const { Router } = require("express");
+const { 
+  createUser,
+  readUser,
+  updateUser,
+  deleteUser
+} = require('../controllers/usersController');
 
-const router = Router()
-//CRUD (Create, Read, Update, Delete)
-router.post('/', createUser)
-router.get('/',readUser)
-router.put('/:userId',updateUser)
-router.delete('/:userId',deleteUser)
+const router = Router();
+
+router.post("/", createUser)          //C Create
+router.get("/", readUser)           //R read
+router.put("/:userId", updateUser)    //U Update
+router.delete("/:userId", deleteUser) //D Delete
+
 
 module.exports = router
