@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose")
-const Service = require('./servicesModel');
+const Service = require('./service.model');
 
 const AddressSchema = Schema({
   street:{
@@ -40,6 +40,7 @@ const UserSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'Service',
   },
+  //Embebido
   address:{
     type:AddressSchema,
   },
