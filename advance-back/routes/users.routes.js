@@ -6,7 +6,7 @@ const {
   updateUser,
   deleteUser
 } = require('../controllers/usersController');
-const { celebrateValidator } = require("../middlewares/celebrateValidator.js");
+const { celebrateValidator } = require("../middlewares/celebrateValidator");
 
 const router = Router();
 
