@@ -1,5 +1,5 @@
 function validatePost (schema){
-  return (req, res, next) => {
+  return (req, res, next) =>{
     const { error } = schema.validate(req.body)
 
     if(error){
