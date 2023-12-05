@@ -1,16 +1,17 @@
 const express = require('express')
 const router = express.Router()
+const {protect} = require('../middleware/authMiddleware')
 const {getTareas, createTarea, updateTarea, deleteTarea} = require('../controllers/tareasController')
 
 //Obtener tareas
-router.get('/', getTareas)
+router.get('/', protect, getTareas)
 
 //Crear tareas
-router.post('/', createTarea)
+router.post('/', protect ,createTarea)
 
 // Modificar tarea
-router.put('/:id', updateTarea)
+router.put('/:id',protect, updateTarea)
 
 //Eliminar tarea
-router.delete('/:id', deleteTarea)
+router.delete('/:id',protect, deleteTarea)
 module.exports = router
