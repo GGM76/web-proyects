@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'localhost/api/user/'
+const API_URL = 'http:// localhost:5000/api/users/'
 
 //resgitrar un usuario 
 const register = async(userData) => {
