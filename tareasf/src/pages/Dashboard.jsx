@@ -1,11 +1,26 @@
-import React from 'react'
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import TareaForm from '../components/TareaForm'
 
 const Dashboard = () => {
+//proteger el dashboard
+  const navigate = useNavigate()
+  const user = useSelector((state) => state.auth)
+
+  useEffect(() =>{
+    if(!user){
+      navigate('/login')
+    } 
+  },[user,navigate])
+  // Si quitamos la proteccion podemos ver el dashboard
   return (
     <>
-    <h1>
-      Dashboard
-    </h1>
+      <section className="heading">
+        <h1>Bienvenido {user && user.name}</h1>
+        <p>Dashboard de tareas</p>
+      </section>
+        <TareaForm />
     </>
   )
 }
