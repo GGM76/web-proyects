@@ -52,7 +52,7 @@ export const tareaSlice = createSlice({
             .addCase(crearTarea.pending, (state) =>{
                 state.isLoading= true
             })
-            .addCase(crearTarea.fulfilled, (state) =>{
+            .addCase(crearTarea.fulfilled, (state,action) =>{
                 state.isLoading= false
                 state.isSucces= true
                 state.tareas.push(action.payload)
@@ -65,12 +65,25 @@ export const tareaSlice = createSlice({
             .addCase(getTareas.pending, (state) =>{
                 state.isLoading= true
             })
-            .addCase(getTareas.fulfilled, (state) =>{
+            .addCase(getTareas.fulfilled, (state,action) =>{
                 state.isLoading= false
                 state.isSucces= true
                 state.mistareas= action.payload
             })
             .addCase(getTareas.rejected, (state,action) =>{
+                state.isLoading= false
+                state.isError= true
+                state.message = action.payload
+            })
+            .addCase(deleteTarea.pending, (state) =>{
+                state.isLoading= true
+            })
+            .addCase(deleteTarea.fulfilled, (state,action) =>{
+                state.isLoading= false
+                state.isSucces= true
+                state.mistareas= state.mistareas.filter((tarea)=>tarea._id !== action.payload.id)
+            })
+            .addCase(deleteTarea.rejected, (state,action) =>{
                 state.isLoading= false
                 state.isError= true
                 state.message = action.payload
