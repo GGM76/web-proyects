@@ -1,3 +1,4 @@
+//Constantes para hcer la seguridad de la api 
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')

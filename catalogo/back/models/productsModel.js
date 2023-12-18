@@ -1,6 +1,7 @@
-const {Schema, model} = require('mongoose')
+const mongoose = require('mongoose')
+const sharp = require('sharp');
 
-const ProductSchema = ({
+const productSchema = mongoose.Schema({
 
         SKU:{
           type:String,
@@ -28,20 +29,17 @@ const ProductSchema = ({
             required: [true, "El codigo AMAZON es requerido "], 
             unique: true
           },
+        image: {
+          //data: Buffer,
+          //contentType: String  
+          type: Buffer
+        },
         active:{
           type: Boolean,
           default: true
         },
+      },{
+        timestamp: true
       })
 
-      ProductSchema.pre('save', async function(next) {
-        if (!this.service) {
-          const defaultService = await Service.findOne({ name: 'NORMAL' });
-          console.log(defaultService)
-          this.service = defaultService._id;
-        }
-        next();
-      });
-
-
-module.exports = model('Product', ProductSchema)
+  module.exports = moongose.model('Product', productSchema)

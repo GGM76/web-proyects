@@ -1,20 +1,20 @@
-const {response, request} = require ( 'express' )
-const Product = require('../models/productsModel')
+const asyncHandler = require('express-async-handler')
+const Producto = require('../models/productsModel')
 
-const createProduct = async (req = request, res = response) => {
-    try{
+
+const getProducto = asyncHandler (async (req,res) => {
+  const producto = await Producto.find({SKU: req.product.SKU})
+  res.status(200).json(producto)    
+})
+
+const createProduct = asyncHandler( async (req , res) => {
         const { body } = req;
         const product = new Product(body)
         await product.save()
         res.status(201).json({
           product
         })
-      }catch(error){
-        res.status(500).json({
-          msg:"Algo Ocurrio al crear un producto",
-          error
         })
-      }
 
     const readProduct = async(req = request, res = response) => {
         try {
@@ -75,9 +75,9 @@ const createProduct = async (req = request, res = response) => {
       }
 
       module.exports = {
+        getProducto,
         createProduct,
         readProduct,
         updateProduct,
         deleteProduct
       } 
-}

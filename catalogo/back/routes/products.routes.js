@@ -1,19 +1,17 @@
-const {Router} = require('express')
-//crear el controlador para utilizar su configuracion 
-const {
-    createProduct,
-    readProduct, 
-    updateProduct, 
-    deleteProduct} = require('../controllers/productsController')
+const express = require('express')
+const router = express.Router()
+const {protect} = require('../middleware/authMiddleware')
+const {getTareas, createTarea, updateTarea, deleteTarea} = require('../controllers/tareasController')
 
-const { celebrateValidator } = require("../middlewares/celebrateValidator");
-const { validateToken } = require("../middlewares/jwtValidator")
+//Obtener tareas
+router.get('/', protect, getTareas)
 
-const router = Router();
+//Crear tareas
+router.post('/', protect ,createTarea)
 
-router.post("/", validateToken("cambiame-por-algo-seguro"), celebrateValidator, createProduct)          //C Create
-router.get("/", readProduct)           //R read
-router.put("/:productId", updateProduct)    //U Update
-router.delete("/:productId", deleteProduct) //D Delete
+// Modificar tarea
+router.put('/:id',protect, updateTarea)
 
+//Eliminar tarea
+router.delete('/:id',protect, deleteTarea)
 module.exports = router
