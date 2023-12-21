@@ -1,23 +1,12 @@
+//Constantes para usar las herramientas instaladas
 const express = require('express')
 const colors = require('colors')
 const dotenv = require('dotenv').config()
-const {errorHandler} = require('./middleware/errorMiddleware.js')
-const connectDB = require('./db/config')
-const { connect } = require('mongoose')
-const cors = require('cors')
+//Constante enlacadas con el archivo env
 const port = process.env.PORT ||  5000
-
-connectDB()
-
+//constante para que la app use express
 const app = express()
-app.use(cors())
-
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-
-app.use('/api/productos',require('./routes/products.routes'))
-app.use('/api/users',require('./routes/userRoutes'))
-app.use(errorHandler)
-
-app.listen(port, () => console.log(`Servidor correindo en ${port}`))
-
+//end point para poder hacer peticiones 
+app.use('/api/productos', require('./routes/productosRoutes'))
+// la api escuhca el servidor e imprimimos en terminal para saber el puerto en el cual esta corriendo 
+app.listen(port, () => console.log(`Servidor iniciado en el ${port}`))
