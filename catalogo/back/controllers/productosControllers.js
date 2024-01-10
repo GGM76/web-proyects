@@ -1,6 +1,7 @@
 //Archivo con la funcion de los end points 
 const asyncHandler = require('express-async-handler')
-const Product = require('../models/productModel')
+const Producto = require('../models/productModel')
+
 //Obtiene todos los productos que se hacen 
 const getProductos = asyncHandler (async (req,res) => {
     const productos = await Producto.find({user: req.user._id})

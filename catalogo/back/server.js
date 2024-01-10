@@ -19,7 +19,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 //Son las rutas que definimos para poder hacer nuestras apicaciones
-app.use('/api/tareas',require('./routes/productosRoutes'))
+app.use('/api/productos',require('./routes/productosRoutes'))
 app.use('/api/users',require('./routes/userRoutes'))
 app.use(errorHandler)//se utiliza para saber si hubo un erro 
 //se usa para saber si hubo un error en el servidor 
