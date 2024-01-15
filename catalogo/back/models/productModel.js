@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
 
 const productoSchema = mongoose.Schema({
-    user:{
-            type: mongoose.Schema.Types.ObjectId,
-            require: true,
-            ref:'User'
-    },
     sku: {
         type: String,
         required: [true, ' Por favor teclea el sku del producto']
@@ -29,12 +24,12 @@ const productoSchema = mongoose.Schema({
     Variante: {
         type: String,
     },
-    HEX: {
+    Imagenes: {
         type: String,
     },
     Active: {
         type: Boolean,
-        default: false
+        default: true
     }
 },{
     timestamps: true //crea campos createdAt y updatedAt automáticamente

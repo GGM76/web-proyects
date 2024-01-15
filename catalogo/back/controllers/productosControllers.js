@@ -4,7 +4,7 @@ const Producto = require('../models/productModel')
 
 //Obtiene todos los productos que se hacen 
 const getProductos = asyncHandler (async (req,res) => {
-    const productos = await Producto.find({user: req.user._id})
+    const productos = await Producto.find({productos: req.producto.sku})
     res.status(200).json(productos) 
 })
 
@@ -23,9 +23,9 @@ const createProducto = asyncHandler (async (req,res) => {
         Titulo: req.body.titulo,
         Descripcion: req.body.descripcion,
         Variante: req.body.variante,
-        HEX: req.body.hex,
-        user: req.user._id
+        Imagenes: req.body.imagen,
     })
+    console.log("producto casi creado ")
     res.status(201).json(producto)        
 })
 //Modifica el producto que elegiste 

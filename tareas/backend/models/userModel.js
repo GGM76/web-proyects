@@ -1,26 +1,25 @@
-//Archivo de molde del usuario 
-const mongoose = require ('mongoose')
-// el la herramienta para la base y pueda registrar usuarios 
+const mongoose = require('mongoose')
+
 const userSchema = mongoose.Schema({
     name: {
-        type: String, 
-        required: [true,"porfavor agregue nombre"]
+        type: String,
+        required: [true, "Por favor teclea tu nombre"]
     },
-    email:{
-        type:String,
-        required:[true, "porfavor agrega un email"]
+    email: {
+        type: String,
+        required: [true, "Por favor teclea tu email"],
+        unique: true
     },
-    password:{
-        type:String,
-        required:[true,"agrega una contrasena"]
+    password: {
+        type: String,
+        required: [true, "por favor teclea tu password"]
     },
-    esAdmin:{
+    esAdmin: {
         type: Boolean,
         default: false
-    },
-},{
+    }
+}, {
     timestamps: true
 })
 
-module.exports=mongoose.model('User',userSchema)
-
+module.exports = mongoose.model("User", userSchema)
