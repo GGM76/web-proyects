@@ -13,18 +13,18 @@ const productoSchema = mongoose.Schema({
         type: String,
         required: [true, ' Por favor teclea el codigo amazon del producto']
     },
-    Titulo: {
+    titulo: {
         type: String,
         required: [true, ' Por favor escriba el titulo del producto']
     },
-    Descripcion: {
+    descripcion: {
         type: String,
         required: [true, ' Por favor escriba la descripcion del producto']
     },
-    Variante: {
+    variante: {
         type: String,
     },
-    Imagenes: {
+    imagenes: {
         type: String,
     },
     Active: {
