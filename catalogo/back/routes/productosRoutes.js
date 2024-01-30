@@ -7,7 +7,7 @@ const { getProductos, createProducto, updateProducto, deleteProducto} = require(
 router.get('/', getProductos)
 
 //Creacion de productos 
-router.post('/', createProducto)
+router.post('/crear', createProducto)
 
 //Actualizar productos
 router.put('/:sku', updateProducto)

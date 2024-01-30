@@ -1,4 +1,4 @@
-// Genera el spinner para el loading
+
 const Spinner = () => {
     return (
         <div className="loadingSpinnerContainer">
