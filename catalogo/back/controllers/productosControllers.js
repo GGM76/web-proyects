@@ -8,6 +8,19 @@ const getProductos = asyncHandler (async (req,res) => {
     res.status(200).json(productos) 
 })
 
+const getOneProducto = asyncHandler (async (req,res) => {
+    const producto = await Producto.findOne({sku: req.params.sku})
+    if(!producto){
+        res.status(404)
+        throw new Error ('producto no enconrtado')
+    }
+    //Verifica,ps que la tarea le pertenece al usuario del token proporcionado 
+    //console.log("cambiando")
+    //const updatedProducto = await Producto.findOneAndReplace({sku: req.params.sku}, req.body, {new:true})
+    res.status(200).json(producto)
+
+})
+
 //Crea el producto que hagas
 const createProducto = asyncHandler (async (req,res) => {
     // revisa si hay algo escrito en el sku 
@@ -35,7 +48,7 @@ const updateProducto = asyncHandler(async (req,res) => {
         throw new Error ('producto no enconrtado')
     }
     //Verifica,ps que la tarea le pertenece al usuario del token proporcionado 
-    console.log("cambiando")
+    //console.log("cambiando")
     const updatedProducto = await Producto.findOneAndReplace({sku: req.params.sku}, req.body, {new:true})
     res.status(200).json(updatedProducto)
     
@@ -57,6 +70,7 @@ const deleteProducto = asyncHandler (async (req,res) => {
 
 module.exports = {
     getProductos,
+    getOneProducto,
     createProducto,
     updateProducto,
     deleteProducto

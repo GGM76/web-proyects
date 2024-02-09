@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ProductoForm from './components/ProductoForm'
+import ProductoDetial from './components/ProductoDetial'
+import ModificarProducto from './components/ModificarProducto'
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='productos/crear' element={<ProductoForm />} />
+            <Route path= {`productos/:sku/modificar`} element={<ModificarProducto />} />
+            <Route path= {`productos/:sku`} element={<ProductoDetial />} />
           </Routes>
         </div>
       </Router>

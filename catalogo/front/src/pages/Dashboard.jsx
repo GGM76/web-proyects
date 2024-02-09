@@ -50,16 +50,15 @@ const Dashboard = () => {
                     </button>
                 </Link>
             </div>
-            
+         
             <Buscador/>
-
+            
             <section className="content">
-                {//misproductos  > 0 ?
-                misproductos.length  > 0 ?
+                {misproductos.length  > 0 ?
                     (
                         <div className='tareas'>
                             {misproductos.map((producto) => (
-                                <ProductoItem key={producto._id} producto={producto} />
+                                <ProductoItem key={producto.sku} producto={producto} />
                             ))}
                         </div>
                     ) : (

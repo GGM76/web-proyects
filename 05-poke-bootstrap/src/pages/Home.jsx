@@ -7,7 +7,7 @@ const Home = () => {
 
   // Llamada a la api de pokemones
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
       .then(res => res.json())
       .then(data => setPokemons(data.results)) // arreglo de pokemones
       .catch(error => console.error(error))

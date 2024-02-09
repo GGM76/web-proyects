@@ -34,11 +34,35 @@ export const getProductos = createAsyncThunk('productos/getProductos', async (_,
     }
 })
 
-//delete tarea
-export const deleteProducto = createAsyncThunk('productos/delete', async (id, thunkAPI) => {
+//Obtener un producto
+export const getOneProducto = createAsyncThunk('productos/getOneProducto', async (sku, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await productoService.deleteProducto(id, token)
+        return await productoService.getOneProducto(sku,token)
+    } catch (error) {
+        const message = (error.reponse && error.reponse.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+//delete tarea
+export const deleteProducto = createAsyncThunk('productos/delete', async (sku, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await productoService.deleteProducto(sku, token)
+    } catch (error) {
+        const message = (error.reponse && error.reponse.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+//Modificar productos
+export const putProducto = createAsyncThunk('productos/put', async(productoData,thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        console.log("SKU" + productoData.sku)
+        console.log("Aqui el slice" + productoData)
+        return await productoService.putProducto(productoData, token)
     } catch (error) {
         const message = (error.reponse && error.reponse.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
@@ -85,9 +109,36 @@ export const productoSlice = createSlice({
             .addCase(deleteProducto.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.misproductos = state.mistareas.filter((tarea) => tarea._id !== action.payload.id)
+                state.misproductos = state.misproductos.filter((producto) => producto.sku !== action.payload.sku)
             })
             .addCase(deleteProducto.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(putProducto.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(putProducto.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                //state.misproductos = state.misproductos.filter((producto) => producto.sku !== action.payload.sku)
+                state.message = action.payload
+            })
+            .addCase(putProducto.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(getOneProducto.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(getOneProducto.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.misproductos = action.payload
+            })
+            .addCase(getOneProducto.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

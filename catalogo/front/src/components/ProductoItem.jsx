@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { deleteProducto } from '../features/productos/productoSlice'
 
 const ProductoItem = ({ producto }) => {
@@ -7,15 +8,13 @@ const ProductoItem = ({ producto }) => {
 
     return (
         <div className="tarea">
-           {/* <div>
-                {new Date(producto.createdAt).toLocaleString('es-MX')}
-            </div>
-            */}
             <ul>
-            <li>{producto.sku}</li>
-            <li>{producto.imagenes}</li>
+                <Link to={`productos/${producto.sku}`}>
+                <li>{producto.sku}</li>
+                <li>{producto.imagenes}</li>
+                </Link>
             </ul>
-            <button className='close' onClick={() => dispatch(deleteProducto(producto._sku))} >X</button>
+            <button className='close' onClick={() => dispatch(deleteProducto(producto.sku))} >X</button>
         </div>
     )
 }
