@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getOneProducto, reset, putProducto } from '../features/productos/productoSlice'
 import Spinner from '../components/Spinner'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ModificarProducto = () => {
 
@@ -19,9 +21,15 @@ const ModificarProducto = () => {
     const [imagenes, setImagen] = useState(misproductos.imagenes)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const notify = () => toast.success('Cambios guardados correctamente', {
+        autoClose: 1000,
+        });
 
     useEffect(() => {
 
+        if (isError) {
+            toast.error(message)
+        }
 
         if (!user) {
             navigate('/login')
@@ -121,7 +129,7 @@ const ModificarProducto = () => {
                         Agregar Producto
                     </button>
                 </Link> */}
-                    <button className='btn btn-block' type="submit">
+                    <button className='btn btn-block' type="submit" onClick={notify}>
                         Guardar cambios
                     </button>
                 </div>

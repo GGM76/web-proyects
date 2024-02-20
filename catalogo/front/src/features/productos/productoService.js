@@ -10,8 +10,8 @@ const crearProducto = async (productoData, token) => {
             Authorization: `Bearer ${token}`
         }
     }
+    console.log("Paso el Service " + productoData)
     const response = await axios.post(API_URL+ "/crear", productoData, config)
-    
     return response.data
 }
 

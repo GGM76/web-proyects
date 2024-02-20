@@ -29,15 +29,23 @@ const createProducto = asyncHandler (async (req,res) => {
         throw new Error('No escrbiste un sku')
     }
     //crea la constante para el producto 
+    console.log("este es el req   " + req.body)
+    console.log("este es el req imagen  " + req.body.imagenes)
+    const urls = [].concat(req.body.imagenes)
     const producto = await Producto.create({
+    //const producto = await Producto.insertOne({
         sku: req.body.sku,
         ML: req.body.ml,
         A: req.body.a,
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
         variante: req.body.variante,
-        imagenes: req.body.imagen,
+        imagenes: urls
+        //imagenes: req.file ? req.file.filename : req.body.imagen
+        //imagenes: () => imagenes.push(req.body.imagen)
+        //imagenes: req.body.imagenes
     })
+    console.log("esta es la imagen producto  " + producto.imagenes)
     res.status(201).json(producto)        
 })
 //Modifica el producto que elegiste 
@@ -57,7 +65,6 @@ const updateProducto = asyncHandler(async (req,res) => {
 //Elminia el producto que elegiste 
 const deleteProducto = asyncHandler (async (req,res) => {
     const producto = await Producto.findOne({sku: req.params.sku})
-    console.log(producto)
     if(!producto){
         res.status(404)
         throw new Error ('Producto no enconrtado')

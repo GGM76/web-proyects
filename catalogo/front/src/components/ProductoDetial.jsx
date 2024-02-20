@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getOneProducto, reset } from '../features/productos/productoSlice'
 import Spinner from '../components/Spinner'
-import ModificarProducto from './ModificarProducto'
+
 
 const ProductoDetial = () => {
     
