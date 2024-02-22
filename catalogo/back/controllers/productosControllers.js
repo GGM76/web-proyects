@@ -29,9 +29,8 @@ const createProducto = asyncHandler (async (req,res) => {
         throw new Error('No escrbiste un sku')
     }
     //crea la constante para el producto 
-    console.log("este es el req   " + req.body)
-    console.log("este es el req imagen  " + req.body.imagenes)
-    const urls = [].concat(req.body.imagenes)
+    //console.log("este es el req imagen  " + req.body.imagenes)
+    //const urls = [].concat(req.body.imagenes)
     const producto = await Producto.create({
     //const producto = await Producto.insertOne({
         sku: req.body.sku,
@@ -40,12 +39,12 @@ const createProducto = asyncHandler (async (req,res) => {
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
         variante: req.body.variante,
-        imagenes: urls
+        imagenes: req.body.imagenes
         //imagenes: req.file ? req.file.filename : req.body.imagen
         //imagenes: () => imagenes.push(req.body.imagen)
         //imagenes: req.body.imagenes
     })
-    console.log("esta es la imagen producto  " + producto.imagenes)
+    //console.log("esta es la imagen producto  " + producto.imagenes)
     res.status(201).json(producto)        
 })
 //Modifica el producto que elegiste 

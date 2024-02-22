@@ -25,9 +25,10 @@ const productoSchema = mongoose.Schema({
         type: String,
     },
     imagenes: {
-        type: [ String ],
+        type: String,
+        default: 'img aqui'
         //type:  Array,
-        maxItems: 3,
+        //maxItems: 3,
         // items: {
         //           type: String
         //          }

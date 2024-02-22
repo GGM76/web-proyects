@@ -1,10 +1,9 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { crearProducto } from '../features/productos/productoSlice'
 import { ToastContainer, toast } from 'react-toastify';
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
 import { storage } from "../../firebase";
 import { v4 } from "uuid";
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,38 +16,56 @@ const ProductoForm = () => {
     const [titulo, setTitulo] = useState('')
      const [descripcion, setDescripcion] = useState('')
     const [variante, setVariante] = useState('')
-    const [imageUpload, setImageUpload] = useState('')
-    // const [imageUrls, setImageUrls] = useState({
-    //     url1: null,
-    //     url2: null,
-    //     url3: null,
-    // });
+    const [imageUpload, setImageUpload] = useState([])
     const [imageUrls, setImageUrls] = useState('');
+
+    const saveurl = (url) => {
+        //ruta de la imagen donde se guarda
+        //setImageUrls(url)
+        setImageUrls({
+            ...imageUrls,
+            url
+          });
+    }
 
     const uploadFile = () => {
     if (imageUpload == null) 
     return
     //ruta de la imagen donde se guarda
-    const imgref = ref(storage, `${sku}/${imageUpload.name + v4()}`);
-    console.log("esta es la referencia:  " + imgref.fullPath) 
-    console.log("este es el bucket:  " + imgref.bucket) 
-    console.log("este es el nombre:  " + imgref.name) 
-    setImageUrls(imgref.name)
+    const imgref = ref(storage, `${sku}/${imageUpload.name + v4()}`)
+    //setImageUrls(imgref.name)
+    //setImageUrls(String(imgref.name))
     //setImageUrls(imgurl => imgurl.concat(imgref.fullPath))
     //setImageUrls(imageUrls.concat(imgref.fullPath))
     //setImageUrls([...imageUrls, String(imgref.name)])
     //setImageUrls({...imageUrls, url1: imgref.fullPath})
     uploadBytes(imgref, imageUpload).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
-        //getDownloadURL(snapshot.ref).then((url) => {
-        //setImageUrls((prev) => [...prev, url]);
-      //});
+        getDownloadURL(imgref).then((downloadURL) => {
+            console.log("URL  " + downloadURL)
+            saveurl(downloadURL)
+            toast.success("Imágen subida correctamente", {
+                autoClose: 1000,
+                })
+            console.log("Subiendo  " + sku)
+            console.log("Subiendo  " + ml)
+            console.log("Subiendo  " + a)
+            console.log("Subiendo  " + titulo)
+            console.log("Subiendo  " + descripcion)
+            console.log("Subiendo  " + variante)
+            console.log("Subiendo  " + imageUrls)
+            dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imageUrls}))
+        }).catch((error) => {
+            console.error('Error obteniendo la URL de descarga:', error);
+        });
+        }).catch((error) => {
+        console.error('Error al subir el archivo:', error);
     });
   };
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+   
     const notify = () => toast.success('Producto agregado!', {
         autoClose: 1000,
         });
@@ -62,30 +79,18 @@ const ProductoForm = () => {
         if (!user) {
             navigate('/login')
         }
-
-        // listAll(imagesListRef).then((response) => {
-        //     response.items.forEach((item) => {
-        //       getDownloadURL(item).then((url) => {
-        //         setImageUrls((prev) => [...prev, url]);
-        //       });
-        //     });
-        //   });
-
     }, [user, navigate])
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log("Esto es lo que se manda a la base  " + imageUrls)
-        dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imageUrls }))
-
         setSKU('')
         setML('')
         setA('')
         setTitulo('')
         setDescripcion('')
         setVariante('')
-        setImageUpload('')
-        setImageUrls([])
+        setImageUpload([])
+        //setImageUrls()
     }
 
     const handleClick = event => {
