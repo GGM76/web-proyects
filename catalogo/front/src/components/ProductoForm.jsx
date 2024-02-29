@@ -19,21 +19,7 @@ const ProductoForm = () => {
     const [imageUpload, setImageUpload] = useState([])
     const [imagenes, setImagenes] = useState('');
 
-    //let url
-
     const saveurl = (url) => {
-    //     setImageUrls(imageUrls => {
-    //             const modifiedValue = url
-    //             console.log("el valor modificado " + modifiedValue);
-    //             return modifiedValue;
-    //         });
-    //     };
-        //ruta de la imagen donde se guarda
-        //setImageUrls(url)
-    //     setImageUrls({
-    //         ...imageUrls,
-    //         url
-    //       });
     console.log("Subiendo  " + imagenes)
     dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imagenes}))
     setSKU('')
@@ -53,12 +39,6 @@ const ProductoForm = () => {
     return
     //ruta de la imagen donde se guarda
     const imgref = ref(storage, `${sku}/${imageUpload.name + v4()}`)
-    //setImageUrls(imgref.name)
-    //setImageUrls(String(imgref.name))
-    //setImageUrls(imgurl => imgurl.concat(imgref.fullPath))
-    //setImageUrls(imageUrls.concat(imgref.fullPath))
-    //setImageUrls([...imageUrls, String(imgref.name)])
-    //setImageUrls({...imageUrls, url1: imgref.fullPath})
     uploadBytes(imgref, imageUpload).then((snapshot) => {
         getDownloadURL(imgref).then((downloadURL) => {
             console.log("URL  " + downloadURL)
@@ -105,14 +85,6 @@ const ProductoForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        // setSKU('')
-        // setML('')
-        // setA('')
-        // setTitulo('')
-        // setDescripcion('')
-        // setVariante('')
-        // setImageUpload([])
-        // setImageUrls()
     }
 
     const handleClick = event => {

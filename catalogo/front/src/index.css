@@ -95,8 +95,12 @@ h3 {
 .tarea {
     background-color: #f4f4f4;
     margin: 10px 0;
-    padding: 20px 0 10px;
+    padding: 5px 0 5px;
     position: relative;
+}
+
+.imgposition{
+    width: 50%;
 }
 
 .tarea .close {

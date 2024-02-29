@@ -11,7 +11,10 @@ const ProductoItem = ({ producto }) => {
             <ul>
                 <Link to={`productos/${producto.sku}`}>
                 <li>{producto.sku}</li>
-                <li>{producto.imagenes}</li>
+                <img
+                    className="imgposition"
+                    src={producto.imagenes}
+                    alt={producto.sku} />
                 </Link>
             </ul>
             <button className='close' onClick={() => dispatch(deleteProducto(producto.sku))} >X</button>

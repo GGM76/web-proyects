@@ -5,11 +5,13 @@ import Buscador from '../components/Buscador'
 import Spinner from '../components/Spinner'
 import { getProductos, reset } from '../features/productos/productoSlice'
 import ProductoItem from '../components/ProductoItem'
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const Dashboard = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const storage = getStorage()
 
     const { user } = useSelector((state) => state.auth)
     const { misproductos, isLoading, isError, message } = useSelector((state) => state.producto)
