@@ -15,9 +15,10 @@ export const crearProducto = createAsyncThunk('productos/crear', async (producto
     try {
         const admin = thunkAPI.getState().auth.user.admin
         console.log(admin)
+        if(admin){
         const token = thunkAPI.getState().auth.user.token
-        console.log("Paso el slice " + productoData.imagenes)
-        return await productoService.crearProducto(productoData, token)
+        console.log("Paso el slice " + JSON.stringify(productoData))
+        return await productoService.crearProducto(productoData, token)}
     } catch (error) {
         const message = (error.reponse && error.reponse.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)

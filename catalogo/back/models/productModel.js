@@ -27,12 +27,8 @@ const productoSchema = mongoose.Schema({
     imagenes: {
         type: String,
         default: 'img aqui'
-        //type:  Array,
-        //maxItems: 3,
-        // items: {
-        //           type: String
-        //          }
-        //default: undefined
+        // validator: value => validator.isURL(value, { protocols: ['http','https','ftp'], require_tld: true, require_protocol: true }),
+        // message: 'Must be a Valid URL'
     },
     Active: {
         type: Boolean,

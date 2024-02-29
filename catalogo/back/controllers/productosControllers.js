@@ -23,6 +23,8 @@ const getOneProducto = asyncHandler (async (req,res) => {
 
 //Crea el producto que hagas
 const createProducto = asyncHandler (async (req,res) => {
+    console.log("Paso en el creador de productos" + JSON.stringify(req.body))
+    console.log("Paso en el creador de productos" + JSON.stringify(req.body.imagenes))
     // revisa si hay algo escrito en el sku 
     if(!req.body.sku){
         res.status(400)
@@ -45,7 +47,9 @@ const createProducto = asyncHandler (async (req,res) => {
         //imagenes: req.body.imagenes
     })
     //console.log("esta es la imagen producto  " + producto.imagenes)
-    res.status(201).json(producto)        
+    console.log("Termino de guardado" + JSON.stringify(producto))
+    res.status(201).json(producto) 
+    
 })
 //Modifica el producto que elegiste 
 const updateProducto = asyncHandler(async (req,res) => {

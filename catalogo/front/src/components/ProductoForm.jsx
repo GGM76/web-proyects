@@ -17,15 +17,35 @@ const ProductoForm = () => {
      const [descripcion, setDescripcion] = useState('')
     const [variante, setVariante] = useState('')
     const [imageUpload, setImageUpload] = useState([])
-    const [imageUrls, setImageUrls] = useState('');
+    const [imagenes, setImagenes] = useState('');
+
+    //let url
 
     const saveurl = (url) => {
+    //     setImageUrls(imageUrls => {
+    //             const modifiedValue = url
+    //             console.log("el valor modificado " + modifiedValue);
+    //             return modifiedValue;
+    //         });
+    //     };
         //ruta de la imagen donde se guarda
         //setImageUrls(url)
-        setImageUrls({
-            ...imageUrls,
-            url
-          });
+    //     setImageUrls({
+    //         ...imageUrls,
+    //         url
+    //       });
+    console.log("Subiendo  " + imagenes)
+    dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imagenes}))
+    setSKU('')
+    setML('')
+    setA('')
+    setTitulo('')
+    setDescripcion('')
+    setVariante('')
+    setImageUpload([])
+    toast.success("Guardado correctamente", {
+        autoClose: 500,
+        })
     }
 
     const uploadFile = () => {
@@ -42,9 +62,11 @@ const ProductoForm = () => {
     uploadBytes(imgref, imageUpload).then((snapshot) => {
         getDownloadURL(imgref).then((downloadURL) => {
             console.log("URL  " + downloadURL)
-            saveurl(downloadURL)
+            //  saveurl(downloadURL)
+            // url = downloadURL
+            setImagenes(downloadURL)
             toast.success("Imágen subida correctamente", {
-                autoClose: 1000,
+                autoClose: 500,
                 })
             console.log("Subiendo  " + sku)
             console.log("Subiendo  " + ml)
@@ -52,8 +74,8 @@ const ProductoForm = () => {
             console.log("Subiendo  " + titulo)
             console.log("Subiendo  " + descripcion)
             console.log("Subiendo  " + variante)
-            console.log("Subiendo  " + imageUrls)
-            dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imageUrls}))
+            console.log("Subiendo  " + imagenes)
+            // dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imageUrls}))
         }).catch((error) => {
             console.error('Error obteniendo la URL de descarga:', error);
         });
@@ -83,14 +105,14 @@ const ProductoForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        setSKU('')
-        setML('')
-        setA('')
-        setTitulo('')
-        setDescripcion('')
-        setVariante('')
-        setImageUpload([])
-        //setImageUrls()
+        // setSKU('')
+        // setML('')
+        // setA('')
+        // setTitulo('')
+        // setDescripcion('')
+        // setVariante('')
+        // setImageUpload([])
+        // setImageUrls()
     }
 
     const handleClick = event => {
@@ -171,6 +193,9 @@ const ProductoForm = () => {
                 </Link> */}
                 <button className='btn btn-block' type="submit" onClick={handleClick}>
                         Agregar Producto
+                    </button>
+                <button className='btn btn-block' type="submit" onClick={saveurl}>
+                        Guardar producto
                     </button>
                 </div>
             </form>
