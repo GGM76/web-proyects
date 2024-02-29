@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { crearProducto } from '../features/productos/productoSlice'
-import { ToastContainer, toast } from 'react-toastify';
-import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
-import { storage } from "../../firebase";
-import { v4 } from "uuid";
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify'
+import { ref, uploadBytes, getDownloadURL  } from "firebase/storage"
+import { storage } from "../../firebase"
+import { v4 } from "uuid"
+import 'react-toastify/dist/ReactToastify.css'
 
 const ProductoForm = () => {
 

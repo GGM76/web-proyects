@@ -54,7 +54,10 @@ const ProductoDetial = () => {
                     <label htmlFor="texto">Descripcion</label>
                     <h1>{misproductos.descripcion}</h1>
                     <label htmlFor="texto">Imagen</label>
-                    <h1>{misproductos.imagenes}</h1>
+                    <img
+                    className="imgposition"
+                    src={misproductos.imagenes}
+                    alt={misproductos.sku} />
                 </div>
                 <div className="form-group">
                 <Link to='modificar'>

@@ -116,6 +116,7 @@ h3 {
 .content {
     width: 70%;
     margin: 0 auto;
+    padding: 10px;
 }
 
 .form-group {
