@@ -24,11 +24,14 @@ const productoSchema = mongoose.Schema({
     variante: {
         type: String,
     },
-    imagenes: {
+    portada: {
         type: String,
-        default: 'img aqui'
-        // validator: value => validator.isURL(value, { protocols: ['http','https','ftp'], require_tld: true, require_protocol: true }),
-        // message: 'Must be a Valid URL'
+    },
+    embalar: {
+        type: String,
+    },
+    embalado: {
+        type: String,
     },
     Active: {
         type: Boolean,

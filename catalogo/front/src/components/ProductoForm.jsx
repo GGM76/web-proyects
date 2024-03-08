@@ -14,61 +14,76 @@ const ProductoForm = () => {
     const [ml, setML] = useState('')
     const [a, setA] = useState('')
     const [titulo, setTitulo] = useState('')
-     const [descripcion, setDescripcion] = useState('')
+    const [descripcion, setDescripcion] = useState('')
     const [variante, setVariante] = useState('')
-    const [imageUpload, setImageUpload] = useState([])
-    const [imagenes, setImagenes] = useState('');
+    const [iportada, setiPortada] = useState([])
+    const [iembalar, setiEmbalar] = useState([])
+    const [iembalado, setiEmbalado] = useState([])
+    const [portada, setPortada] = useState('')
+    const [embalar, setEmbalar] = useState('')
+    const [embalado, setEmbalado] = useState('')
 
     const saveurl = (url) => {
-    console.log("Subiendo  " + imagenes)
-    dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imagenes}))
+    dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, portada,embalar,embalado}))
     setSKU('')
     setML('')
     setA('')
     setTitulo('')
     setDescripcion('')
     setVariante('')
-    setImageUpload([])
     toast.success("Guardado correctamente", {
         autoClose: 500,
         })
     }
 
     const uploadFile = () => {
-    if (imageUpload == null) 
+    if (iportada == null) 
     return
     //ruta de la imagen donde se guarda
-    const imgref = ref(storage, `${sku}/${imageUpload.name + v4()}`)
-    uploadBytes(imgref, imageUpload).then((snapshot) => {
-        getDownloadURL(imgref).then((downloadURL) => {
-            console.log("URL  " + downloadURL)
-            //  saveurl(downloadURL)
-            // url = downloadURL
-            setImagenes(downloadURL)
-            toast.success("Imágen subida correctamente", {
-                autoClose: 500,
-                })
-            console.log("Subiendo  " + sku)
-            console.log("Subiendo  " + ml)
-            console.log("Subiendo  " + a)
-            console.log("Subiendo  " + titulo)
-            console.log("Subiendo  " + descripcion)
-            console.log("Subiendo  " + variante)
-            console.log("Subiendo  " + imagenes)
-            // dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imageUrls}))
-        }).catch((error) => {
-            console.error('Error obteniendo la URL de descarga:', error);
-        });
-        }).catch((error) => {
-        console.error('Error al subir el archivo:', error);
-    });
-  };
+    const port = ref(storage, `${sku}/${iportada.name + v4()}`)
+    const emb = ref(storage, `${sku}/${iembalar.name + v4()}`)
+    const embal = ref(storage, `${sku}/${iembalado.name + v4()}`)
+    // uploadBytes(imgref, portada).then((snapshot) => {
+    //     getDownloadURL(imgref).then((downloadURL) => {
+    //         setPortada(downloadURL)
+    //         toast.success("Imágen subida correctamente", {
+    //             autoClose: 500,
+    //             })
+    //         // dispatch(crearProducto({ sku,ml,a,titulo,descripcion,variante, imageUrls}))
+    //     }).catch((error) => {
+    //         console.error('Error obteniendo la URL de descarga:', error);
+    //     })
+    //     }).catch((error) => {
+    //     console.error('Error al subir el archivo:', error);
+    // });
+        uploadBytes(port, iportada).then((snapshot) => {
+        getDownloadURL(port).then((downPortada) => {
+        setPortada(downPortada)
+        // setImagenes(imagenes => [...imagenes, downPortada])
+            uploadBytes(emb, iembalar).then((snapshot) => {
+            getDownloadURL(emb).then((downEmbalar) => {
+                setEmbalar(downEmbalar)
+                //setImagenes(imagenes => [...imagenes, downEmbalar])
+                    uploadBytes(embal, iembalado).then((snapshot) => {
+                    getDownloadURL(embal).then((downEmbalado) => {
+                        setEmbalado(downEmbalado)
+                        //setImagenes(imagenes => [...imagenes, downEmbalado])
+                        toast.success("Imágenes subidas correctamente", {
+                            autoClose: 500,
+                            })
+                    }).catch((error) => {console.error('Error obteniendo la URL de descarga:', error)})
+                    }).catch((error) => {console.error('Error al subir el archivo:', error)})
+                }).catch((error) => {console.error('Error obteniendo la URL de descarga:', error)})
+                }).catch((error) => {console.error('Error al subir el archivo:', error)})
+        }).catch((error) => {console.error('Error obteniendo la URL de descarga:', error)})
+        }).catch((error) => {console.error('Error al subir el archivo:', error)})
+  }
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
    
-    const notify = () => toast.success('Producto agregado!', {
+    const notify = () => toast.success('Subiendo Imagenes', {
         autoClose: 1000,
         });
 
@@ -148,14 +163,19 @@ const ProductoForm = () => {
                         value={descripcion}
                         onChange={(e) => setDescripcion(e.target.value)}
                     />
-                    <label htmlFor="texto">Imagen</label>
-                    <input 
-                        type="file" 
-                        //name="imageUpload"
-                        //id="imageUpload"
-                        //value={ImageUpload}
-                        onChange={(e) => { setImageUpload(e.target.files[0]); }} 
+                    <label htmlFor="texto">Imagen de portada</label>
+                    <input type="file" 
+                        onChange={(e) => { setiPortada(e.target.files[0]) }} 
                     />
+                    <label htmlFor="texto">Imagen con que se embala</label>
+                    <input type="file" 
+                        onChange={(e) => { setiEmbalar(e.target.files[0]) }} 
+                    />
+                    <label htmlFor="texto">Imagen del producto embalado</label>
+                    <input type="file" 
+                        onChange={(e) => { setiEmbalado(e.target.files[0]) }} 
+                    />
+                    {/* <input accept="image/*" multiple onChange={(e) => { setImageUpload(e.target.files[0]) }}  type="file" /> */}
                 </div>
                 <div className="form-group">
                 {/* <Link to='/'>

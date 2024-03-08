@@ -24,7 +24,7 @@ const getOneProducto = asyncHandler (async (req,res) => {
 //Crea el producto que hagas
 const createProducto = asyncHandler (async (req,res) => {
     console.log("Paso en el creador de productos" + JSON.stringify(req.body))
-    console.log("Paso en el creador de productos" + JSON.stringify(req.body.imagenes))
+    // console.log("Paso en el creador de productos" + JSON.stringify(req.body.imagenes))
     // revisa si hay algo escrito en el sku 
     if(!req.body.sku){
         res.status(400)
@@ -41,13 +41,14 @@ const createProducto = asyncHandler (async (req,res) => {
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
         variante: req.body.variante,
-        imagenes: req.body.imagenes
+        portada: req.body.portada,
+        embalar: req.body.embalar,
+        embalado: req.body.embalado
         //imagenes: req.file ? req.file.filename : req.body.imagen
         //imagenes: () => imagenes.push(req.body.imagen)
-        //imagenes: req.body.imagenes
     })
     //console.log("esta es la imagen producto  " + producto.imagenes)
-    console.log("Termino de guardado" + JSON.stringify(producto))
+    // console.log("Termino de guardado" + JSON.stringify(producto))
     res.status(201).json(producto) 
     
 })

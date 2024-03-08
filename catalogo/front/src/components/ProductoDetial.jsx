@@ -39,24 +39,31 @@ const ProductoDetial = () => {
     
     return (
         <section className="form">
-
                 <div className="form-group">
-                    <label htmlFor="texto">SKU</label>
-                    <h1>{misproductos.sku}</h1>
-                    <label htmlFor="texto">Titulo</label>
+                    {/* <label htmlFor="texto">Titulo</label> */}
                     <h1>{misproductos.titulo}</h1>
-                    <label htmlFor="texto">Variante</label>
+                    <img
+                    className="imgposition"
+                    src={misproductos.portada}
+                    alt={misproductos.sku} />
+                    {/* <label htmlFor="texto">SKU</label> */}
+                    <h1>{misproductos.sku}</h1>
+                    <label htmlFor="texto">Descripcion</label>
+                    <h1>{misproductos.descripcion}</h1>
+                    <img
+                    className="imgposition"
+                    src={misproductos.embalar}
+                    alt={misproductos.sku} />
+                    <label htmlFor="texto">Color del producto</label>
                     <h1>{misproductos.variante}</h1>
                     <label htmlFor="texto">Codigo de mercadolibre</label>
                     <h1>{misproductos.ML}</h1>
                     <label htmlFor="texto">Codigo de amazon</label>
                     <h1>{misproductos.A}</h1>
-                    <label htmlFor="texto">Descripcion</label>
-                    <h1>{misproductos.descripcion}</h1>
-                    <label htmlFor="texto">Imagen</label>
+                    <label htmlFor="texto">El porducto embalado termina asi</label>
                     <img
                     className="imgposition"
-                    src={misproductos.imagenes}
+                    src={misproductos.embalado}
                     alt={misproductos.sku} />
                 </div>
                 <div className="form-group">
