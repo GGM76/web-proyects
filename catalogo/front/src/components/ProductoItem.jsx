@@ -9,11 +9,13 @@ import 'react-toastify/dist/ReactToastify.css'
 const ProductoItem = ({ producto }) => {
 
     const dispatch = useDispatch()
-    //https://firebasestorage.googleapis.com/v0/b/catalogo-d13a6.appspot.com/o/U480307EscBol%2Fundefined53e3f4c5-dd8d-4c19-a8ae-56eda04a2e1b?alt=media&token=daed9538-ec24-4e29-9834-5050d0ca5348
-    //https://firebasestorage.googleapis.com/v0/b/catalogo-d13a6.appspot.com/o/U480307EscBol%2Fundefined53e3f4c5-dd8d-4c19-a8ae-56eda04a2e1b?alt=media&token=daed9538-ec24-4e29-9834-5050d0ca5348
     function nombre(url) {
         const nom = url.split( '/' )
         let image = nom[7]
+        const aux = image.split('%2F')
+        image=aux[1]
+        const auxi= image.split('?')
+        image = auxi[0]
         return image
     }
 
@@ -21,12 +23,15 @@ const ProductoItem = ({ producto }) => {
         const npor = nombre(producto.portada)
         const nemb = nombre(producto.embalar)
         const nemd = nombre(producto.embalado)
+            
         const storage = getStorage()
-        const portRef = ref(storage, npor)
-        const embRef = ref(storage, nemb)
-        const emdRef = ref(storage, nemd)
+        const portRef = ref(storage, producto.sku+'/'+npor)
+        const embRef = ref(storage, producto.sku+'/'+nemb)
+        const emdRef = ref(storage, producto.sku+'/'+nemd)
+        
         
         deleteObject(portRef).then(() => {
+
 			// File deleted successfully
 			console.log('file eliminated!');
 		}).catch(() => {

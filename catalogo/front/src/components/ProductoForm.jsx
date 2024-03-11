@@ -184,7 +184,7 @@ const ProductoForm = () => {
                     </button>
                 </Link> */}
                 <button className='btn btn-block' type="submit" onClick={handleClick}>
-                        Agregar Producto
+                        Subir imagenes
                     </button>
                 <button className='btn btn-block' type="submit" onClick={saveurl}>
                         Guardar producto
