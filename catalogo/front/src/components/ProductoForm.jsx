@@ -96,6 +96,9 @@ const ProductoForm = () => {
         if (!user) {
             navigate('/login')
         }
+        if(!user.admin){
+            navigate("/")
+        }
     }, [user, navigate])
 
     const onSubmit = (e) => {

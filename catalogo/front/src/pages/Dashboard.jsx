@@ -24,7 +24,7 @@ const Dashboard = () => {
     useEffect(() => {
        fetch('http://localhost:5173/')
         .then(res => res.json())
-        .then(data => setSearch(data.results)) // arreglo de pokemones
+        .then(data => setSearch(data.results)) // arreglo de productos
         .catch(error => console.error(error))
 
         if (isError) {
@@ -59,13 +59,14 @@ const Dashboard = () => {
             </section>
 
             <div className="form-group">
+            
                 <Link to='productos/crear'>
                     <button className='btn btn-block' type="submit">
                         Agregar una Producto
                     </button>
                 </Link>
             </div>
-         
+            
             {/* <Buscador text={misproductos} /> */}
             <input
             type='text'
@@ -80,7 +81,7 @@ const Dashboard = () => {
                     (
                         <div className='tareas'>
                             {filteredProductos.map((producto) => (//misproductos.map((producto) => (
-                                <ProductoItem key={producto.sku} producto={producto} />
+                                <ProductoItem key={producto.sku} producto={producto} user= {user.admin}/>
                             ))}
                         </div>
                     ) : (

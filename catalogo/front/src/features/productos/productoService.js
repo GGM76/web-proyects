@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/productos'
+//const API_URL = 'http://localhost:5000/api/productos'
+const API_URL = 'https://vast-gray-xerus-sock.cyclic.app/api/productos/'
 //const API_URL = 'https://faithful-rose-katydid.cyclic.app/api/tareas/'
 
 //crear una tarea

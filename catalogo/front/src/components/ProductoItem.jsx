@@ -6,7 +6,7 @@ import {storage} from '../../firebase';
 import { ref, deleteObject, getStorage  } from "firebase/storage";
 import 'react-toastify/dist/ReactToastify.css'
 
-const ProductoItem = ({ producto }) => {
+const ProductoItem = ({ producto,user }) => {
 
     const dispatch = useDispatch()
     function nombre(url) {
@@ -20,6 +20,7 @@ const ProductoItem = ({ producto }) => {
     }
 
     const handleClick = event => {
+        if(user){
         const npor = nombre(producto.portada)
         const nemb = nombre(producto.embalar)
         const nemd = nombre(producto.embalado)
@@ -31,32 +32,30 @@ const ProductoItem = ({ producto }) => {
         
         
         deleteObject(portRef).then(() => {
-
-			// File deleted successfully
 			console.log('file eliminated!');
 		}).catch(() => {
-			// Uh-oh, an error occurred!
 			console.log('Error erasing the image');
 		})
         deleteObject(embRef).then(() => {
-			// File deleted successfully
 			console.log('file eliminated!');
 		}).catch(() => {
-			// Uh-oh, an error occurred!
 			console.log('Error erasing the image');
 		})
         deleteObject(emdRef).then(() => {
-			// File deleted successfully
 			console.log('file eliminated!');
 		}).catch(() => {
-			// Uh-oh, an error occurred!
 			console.log('Error erasing the image');
 		})
         dispatch(deleteProducto(producto.sku)),
         toast.success('Eliminado correctamente :c', {
             autoClose: 300,
             });
-        
+        }else{
+            toast.error('No eres administrador', {
+                autoClose: 1000,
+                });
+        }
+
     }
 
     return (
