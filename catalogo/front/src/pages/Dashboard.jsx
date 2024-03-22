@@ -17,7 +17,8 @@ const Dashboard = () => {
     const { misproductos, isLoading, isError, message } = useSelector((state) => state.producto)
 
     const filteredProductos = misproductos.filter(producto => { // Lista de pokemones filtrados
-        return producto.sku.toLowerCase().includes(search.toLocaleLowerCase())
+        //return producto.sku.toLowerCase().includes(search.toLocaleLowerCase())
+        return JSON.stringify(producto).toLowerCase().includes(search.toLocaleLowerCase())
       })
 
 

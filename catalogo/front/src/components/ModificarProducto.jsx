@@ -58,7 +58,7 @@ const ModificarProducto = () => {
         setTitulo(titulo)
         setDescripcion(descripcion)
         setVariante(variante)
-        setImagen(imagenes)
+        //setImagen(imagenes)
         
     }
 
@@ -114,14 +114,14 @@ const ModificarProducto = () => {
                         value={descripcion}
                         onChange={(e) => setDescripcion(e.target.value)}
                     />
-                    <label htmlFor="texto">Imagen</label>
+                    {/* <label htmlFor="texto">Imagen</label>
                     <input
                         type="text"
                         name="imagen"
                         id="imagen"
                         value={imagenes}
                         onChange={(e) => setImagen(e.target.value)}
-                    />
+                    /> */}
                 </div>
                 <div className="form-group">
                 {/* <Link to='/'>

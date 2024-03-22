@@ -67,11 +67,11 @@ const ProductoDetial = () => {
                     alt={misproductos.sku} />
                 </div>
                 <div className="form-group">
-                <Link to='modificar'>
+                {/*<Link to='modificar'>
                     <button className='btn btn-block' type="submit">
                        Modificar
                     </button>  
-                </Link> 
+                </Link> */}
                 </div>
         </section>
     )
